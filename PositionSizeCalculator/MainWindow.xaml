@@ -1,0 +1,77 @@
+﻿<Window x:Class="StockCalculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Position Size Calculator" Height="270" Width="200"
+        Background="#FF1E1E1E" Foreground="White">
+    <Window.Resources>
+        <!-- Common Style for TextBoxes -->
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#FF2D2D2D"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#FF505050"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+
+        <!-- Common Style for TextBlocks -->
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
+        <!-- Common Style for Buttons -->
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#FF2D2D2D"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#FF505050"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Title -->
+            <RowDefinition Height="Auto"/>
+            <!-- Pin Button -->
+            <RowDefinition Height="Auto"/>
+            <!-- Account Balance -->
+            <RowDefinition Height="Auto"/>
+            <!-- Stock Price -->
+            <RowDefinition Height="*"/>
+            <!-- Result -->
+        </Grid.RowDefinitions>
+
+        <!-- Title -->
+        <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center">
+            <TextBlock Text="Position Size Calculator" 
+                       FontSize="14" FontWeight="Bold" Margin="0,0,0,5" TextAlignment="Center"/>
+        </StackPanel>
+
+        <!-- Pin Button -->
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+            <Button x:Name="PinButton" Content="📌 Pin" 
+                    Width="70" Height="30"
+                    Click="PinButton_Click"/>
+        </StackPanel>
+
+        <!-- Account Balance Input -->
+        <StackPanel Orientation="Vertical" Grid.Row="2" Margin="0, 5">
+            <TextBlock Text="Account Balance" Width="100" HorizontalAlignment="Center" TextAlignment="Center"/>
+            <TextBox x:Name="AccountBalanceInput" Width="100"
+                     PreviewTextInput="AccountBalanceInput_PreviewTextInput"
+                     TextChanged="Input_TextChanged"/>
+        </StackPanel>
+
+        <!-- Stock Price Input -->
+        <StackPanel Orientation="Vertical" Grid.Row="3" Margin="0, 5">
+            <TextBlock Text="Stock Price" Width="100" HorizontalAlignment="Center" TextAlignment="Center" />
+            <TextBox x:Name="StockPriceInput" Width="100"
+                     PreviewTextInput="StockPriceInput_PreviewTextInput"
+                     TextChanged="Input_TextChanged"/>
+        </StackPanel>
+
+        <!-- Result Output -->
+        <TextBlock x:Name="ResultText" FontSize="14" FontWeight="SemiBold"
+                   HorizontalAlignment="Center" TextAlignment="Center"
+                   Grid.Row="4" Margin="0,20,0,0"/>
+    </Grid>
+</Window>
